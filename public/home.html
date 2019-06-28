@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Family Shopping Cart</title>
+    <!--<link rel ="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" media="screen" href="css/style.css">
+  </head>
+
+<body class="container">
+  <header>
+    <div class="logo">
+      <img src ="images/cart-logo.png" alt="Cart logo">
+    </div>
+    
+    <div class="tagline"><span>A place where everyone in a family can add to one family shopping list</span></div>
+  </header>
+    
+    <main>
+        <div>
+        <h1>Family Shopping Cart</h1>
+          <form action="/getFamilyMember" method="get">
+            <label class="heading">Please enter in your name:</label>
+            <input type="text" name="name">
+            <input type="submit" value="Login" id="button">
+          </form>
+          
+        <div class="wrapper">  
+        <div class="welcome">
+          <h2>Welcome {username}</h2>
+          <p>Please add your items to the family shopping list.</p>
+        </div>
+        <div class="shoppinglist"><p>This is where the current list will go.
+        There will be a delete button to each item.</p>
+        <nav>
+          <ul>
+            <li class="center" class="link">Turkey<a class="list" href="#" > Delete</a></li>
+            <li class="center" class="link">Milk<a class="list" href="#" > Delete</a></li>
+            <li class="center" class="link">Bread<a class="list" href="#" > Delete</a></li>
+            <li class="center" class="link">Toliet Paper<a class="list" href="#" > Delete</a></li>
+
+
+          </ul>
+          
+        </nav>
+          
+          </div>
+        </div>
+        
+            
+     </div>       
+            
+    </main>
+    <footer>
+      <p>All content &copy; Bella Paper Design.</p>
+  
+    </footer>
+  
+    
+    
+    
+    
+
+</body>
+</html>
