@@ -1,16 +1,16 @@
 const express = require("express");
 const path = require('path');
-const { Pool } = require("pg");
-const PORT = process.env.PORT || 5000;
 require('dotenv').config();
 
-//database
-const connectionString = process.env.DATABASE_URL;
+const memberController = require("./controllers/memberController.js");
+const listController = require("./controllers/listController.js")
 
-const pool = new Pool({connectionString: connectionString});
+//database
+//const connectionString = process.env.DATABASE_URL; //in memberModel
+//const { Pool } = require("pg"); //in memberModel
+//const pool = new Pool({connectionString: connectionString}); //in memberModel
 //test connection
   //var sql = "SELECT * FROM family_member";
-
   //pool.query(sql, function(err, result) {
       // If an error occurred...
       //if (err) {
@@ -21,50 +21,57 @@ const pool = new Pool({connectionString: connectionString});
       // Log this to the console for debugging purposes.
       //console.log("Back from DB with result:");
       //console.log(result.rows);
-
-
   //});
 
+const PORT = process.env.PORT || 5000;
 
+var app = express();
+//express()
+  app.use(express.static(path.join(__dirname, 'public'))); //make public accessible for static pages-any file accessed through the url bar
+  app.use(express.json()); //suports json encoded bodies--middleware
+  app.use(express.urlencoded({extended: true})); //support url encoded body-middleware
 
+ // app.set('views', path.join(__dirname, 'views')); //path to views
+  //app.set('view engine', 'ejs');//use ejs
 
-//var app = express()
-express()
-  .use(express.static(path.join(__dirname, 'public'))) //make public accessible for static pages-any file accessed through the url bar
-  .set('views', path.join(__dirname, 'views')) //path to views
-  .set('view engine', 'ejs')//use ejs
-
-  .get("/", function(req, res){
-    console.log("Received a request from /")
+  app.get("/", function(req, res){
+    console.log("Received a request from /");
     res.write("This is the root")
-    res.end()
+    //res.render('public/home.html');
+    res.end();
   
-  })
+  });
 //get interface
-  .get("/home", function(req, res) {
-    console.log("Received a quest from /home")
-    var name = getCurrentLoggedInUserAccount()
-    var email = "cristinaelissa@yahoo.com"
+  //app.get("/home", function(req, res) {
+    //console.log("Received a quest from /home")
+    //var name = getCurrentLoggedInUserAccount()
+    //var email = "cristinaelissa@yahoo.com"
   
-    var params = {username: name, emailAddress: email}
+    //var params = {username: name, emailAddress: email}
   
-    res.render("pages/home", params)//View
+    //res.render("pages/home", params)//View
     
-  })
-//let user log in
-  .get("/getFamilyMember", getFamilyMember)
+  //});
 
+//let user log in
+  app.get("/search", memberController.search);
+
+// user log in 2
+  app.get("/getFamilyMember", memberController.getFamilyMember);
 
 //get shopping list once logged in
-  .get("/getShoppingList", getShoppingList)
+  app.get("/loadList", listController.getShoppingList);
 
+//add new item to item_shopping table using the listcontroller function insertNewItem
+  app.post("/shopping_item", listController.insertNewItem);
  
-  .listen(PORT, function(){
+  app.listen(PORT, function(){
+  
     console.log("The server is up and listening on", PORT);
-  })
+  });
 
 
-function getCurrentLoggedInUserAccount() {
+/*function getCurrentLoggedInUserAccount() {
    return "Cristina"
  }
 
@@ -92,6 +99,7 @@ function getFamilyMember(req, res) {
       
   });
 }
+
 function getFamilyMemberFromDb(name, callback) {
   console.log("getFamilyMemberFromDb called with name:", name);
   
@@ -109,4 +117,4 @@ function getFamilyMemberFromDb(name, callback) {
     
     callback(null, result.rows);
   })
-}
+}*/

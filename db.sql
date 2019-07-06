@@ -35,12 +35,15 @@ CREATE TABLE shopping_items (
 	item_id SERIAL NOT NULL primary key,
 	item varchar(100) NOT NULL
 )
-INSERT INTO shopping_items(item_id, item) VALUES(DEFAULT, 'Milk');	
+INSERT INTO shopping_items(item_id, item) VALUES(DEFAULT, 'Milk');
+INSERT INTO shopping_items(item_id, item) VALUES(DEFAULT, 'Bread');		
 	
 	
 CREATE TABLE item_categories (
-	item_id int NOT NULL references item(item_id),
+	item_id int NOT NULL references shopping_items(item_id),
 	category_id int NOT NUll references category(category_id)
-	--PRIMARY KEY (genre_id, book_id)
 	);
+	
+INSERT INTO item_categories(item_id, category_id) VALUES(1, 1);
+INSERT INTO item_categories(item_id, category_id) VALUES(2, 13);
 
