@@ -2,12 +2,12 @@
 
 const { Pool } = require("pg");
 const db_url = process.env.DATABASE_URL;
-console.log("DB URL:" + db_url);
+//console.log("DB URL:" + db_url);
 
 const pool = new Pool({connectionString: db_url});
 
 function getFamilyMemberFromDb(first_name, callback) {
-  console.log("getFamilyMemberFromDb called with name:", first_name);
+  console.log("getFamilyMemberFromDb from memberModel called with name:", first_name);
   
   var sql = "SELECT family_member_id, first_name, last_name FROM family_member WHERE first_name=$1";
   
@@ -19,7 +19,7 @@ function getFamilyMemberFromDb(first_name, callback) {
       console.log(err);
       callback(err, null);
     }
-    console.log("Found DB results:" + JSON.stringify(result.row));
+   console.log("Found DB results:" + JSON.stringify(result.rows));
     
     callback(null, result.rows);
   })

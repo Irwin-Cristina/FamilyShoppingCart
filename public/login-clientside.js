@@ -3,14 +3,13 @@ function login() {
   var first_name = $("#first_name").val();
   console.log("Name: " + first_name);
   
-  $.get("/search", {first_name:first_name}, function(data) {
-    console.log("Back from the server with:");
-    console.log(data);
+  $.get("/getFamilyMember", {first_name:first_name}, function(data) {
+      //$.get("/getFamilyMember", {first_name:first_name}, function(data) {
+
+    console.log("Back from the server with:" + data);
+    //console.log(data);
     
-    for (var i =0; i< data.list.length; i++){
-      var member = data.list[i];
-      console.log(member);
-      $("#h2member").append(member.first_name + " " + member.last_name);
-    }
-  })
+   $("#h2member").html(data.first_name + " " + data.last_name);
+    
+  });
 }

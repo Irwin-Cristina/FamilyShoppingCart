@@ -22,31 +22,31 @@
         <div>
         <h1>Family Shopping Cart</h1>
           
-          <form action="/getFamilyMember" method="get">
+          
             <label class="heading">Please enter in your name:</label>
-            <input type="text" name="first_name" placeholder="First Name">
-            <input type="submit" value="Login" id="button">
-          </form>
-          <!--<div class="form">
+            <input type="text" name="first_name" id="first_name" placeholder="First Name">
+            <button type="submit" value="Login" id="button" onclick=login()>Login</button> 
+         
           <!--<form action="/getFamilyMember" method="get">
             <label class="heading">Please enter in your name:</label>
-            <input type="text" id="userLogin" name="name" placeholder="Scott Irwin"><button onclick="login()">Login</button>
-            <!--<input type="submit" value="Login" id="button">
-          </form>
-          </div>-->
+            <input type="text" name="first_name" placeholder="First Name">
+          <input type="submit" value="Login" id="button">
+          </form>-->
         <div class="wrapper">  
         <div class="welcome">
+        <!--<form action="/shopping_item" method="post">-->
           <h2>Welcome <span id ="h2member"></span></h2>
-          <p>Please add your items to the family shopping list.</p>
-          <input type ="text" id="item" placeholder="Shopping item"><button onclick="addItem()">Add item</button><br>
-          
+            <!--<h2 id ="h2member"></h2>-->
+            <p>Please add your items to the family shopping list.</p>
+            <input type ="text" name="item" id="item" placeholder="Shopping item"><button type="submit" onclick="addItem()">Add item</button><br>
+          <!--</form>-->
+          <h3 id="h3confirmation"></h3>
         </div>
         
         <div id="shoppingList" class="shoppinglist">
           <h2>Shopping List</h2>
           
-          <button onclick="loadList()">See family shopping list</button><p>This is where the current list will go.
-        There will be a delete button to each item.</p>
+          <button onclick="loadList()">See family shopping list</button><p></p>
           
         <nav>
           <ul id="ulShoppingList">
@@ -70,7 +70,7 @@
   
     </footer>
   
-    
+ 
     
     
     

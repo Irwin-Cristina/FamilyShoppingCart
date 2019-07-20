@@ -2,12 +2,10 @@ const memberModel = require("../models/memberModel.js");
 
 
 function getFamilyMember(req, res) {
-  console.log("Getting Family Member");
-  
    //search?first_name=Cristina
   var first_name =req.query.first_name;
-  console.log("retreiving person with name:", first_name)
-  
+  console.log("Getting Family Member:" + first_name);
+
   memberModel.getFamilyMemberFromDb(first_name, function(err, result){
     console.log("Back from the getFamilyMemberFromDb function with results:", result);
     
@@ -25,16 +23,15 @@ function getFamilyMember(req, res) {
 
 
 
-function search(req, res){
-  console.log("Getting Family member:" + first_name);
-  //TODO: check of book id or topic id, and call appropriate function
+//function search(req, res){
+  //console.log("Getting Family member:" + first_name);
   
   //search?first_name=Cristina
-  var first_name = req.query.first_name; //come from the query
+  //var first_name = req.query.first_name; //come from the query
     //console.log("Retrieving person with name:", first_name);
   
   
-  memberModel.searchByName(first_name, function(error, results){
+  //memberModel.searchByName(first_name, function(error, results){
     //console.log ("Back from the memberModel.searchByName function with results:", results);
     
     
@@ -45,15 +42,16 @@ function search(req, res){
       //res.status(200).json(person);
     //}
   //var person = results[0];
-   res.json(results);
-  });
+   //res.json(results);
+    //res.render('index.html', results);
+  //});
   
   //var topicId;//come from query
   //scriptureModel.searchByTopic(topicId, function(error, results){
       //res.json(results);
   //});
-}
+//}
 module.exports = {
-  getFamilyMember: getFamilyMember,
-  search: search
+  getFamilyMember: getFamilyMember
+  //search: search
 };

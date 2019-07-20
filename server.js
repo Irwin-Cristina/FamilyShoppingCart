@@ -36,9 +36,10 @@ var app = express();
 
   app.get("/", function(req, res){
     console.log("Received a request from /");
-    res.write("This is the root")
+    //res.write("This is the root")
     //res.render('public/home.html');
-    res.end();
+    //res.end();
+    res.sendFile(__dirname + '/public/home.html');
   
   });
 //get interface
@@ -54,7 +55,7 @@ var app = express();
   //});
 
 //let user log in
-  app.get("/search", memberController.search);
+  //app.get("/search", memberController.search);
 
 // user log in 2
   app.get("/getFamilyMember", memberController.getFamilyMember);
@@ -65,6 +66,9 @@ var app = express();
 //add new item to item_shopping table using the listcontroller function insertNewItem
   app.post("/shopping_item", listController.insertNewItem);
  
+//delete item frim item_shopping table using the listcontroller function deleteItem
+  app.post("/delete", listController.deleteItem);
+
   app.listen(PORT, function(){
   
     console.log("The server is up and listening on", PORT);
