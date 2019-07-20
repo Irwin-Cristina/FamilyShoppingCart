@@ -70,7 +70,7 @@ function insertNewItem(item, callback){ //instert the item and item_id, the item
   });
 }
 
-function deleteItemfromDb(item, callback) {
+/*function deleteItemfromDb(item, callback) {
   console.log("This is the model. Deleting the item from database" + item);
   var sql = "DELETE FROM shopping_items(item) WHERE item = ($1)";
   var params = [item];
@@ -94,7 +94,7 @@ function deleteItemfromDb(item, callback) {
       callback(null, results);
     }
   });
-}
+}*/
 
 
 function assignCategoryToItem(item_id, category_id, callback){
@@ -107,6 +107,6 @@ function assignCategoryToItem(item_id, category_id, callback){
 module.exports = {
   getAllitems: getAllitems,
   insertNewItem: insertNewItem,
-  assignCategoryToItem: assignCategoryToItem,
-  deleteItemfromDb: deleteItemfromDb
+  assignCategoryToItem: assignCategoryToItem
+  //deleteItemfromDb: deleteItemfromDb
 };

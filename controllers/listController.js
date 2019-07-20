@@ -34,16 +34,16 @@ function insertNewItem(req, res){ // results from model and pass back to server.
 }
 
 
-function deleteItem(req, res){
-  var item = ?????;
-  console.log("Deleting item. This is the controller");
+//function deleteItem(req, res){
+  //var item = ?????;
+  //console.log("Deleting item. This is the controller");
   
   //go to model to deleteItemfromDb function to delete the item from database
-  listModel.deleteItemfromDb(item, function(error, results){
-    console.log ("Back from listMode.deleteItemfromDb delete:", results);
-    res.json(results);
-  });
-}
+  //listModel.deleteItemfromDb(item, function(error, results){
+    //console.log ("Back from listMode.deleteItemfromDb delete:", results);
+    //res.json(results);
+  //});
+//}
 
 function assignCategoryToItem(req, res){
   var item_id = 1;
@@ -56,6 +56,5 @@ function assignCategoryToItem(req, res){
 module.exports = {
   getShoppingList: getShoppingList,
   insertNewItem: insertNewItem,
-  assignCategoryToItem: assignCategoryToItem,
-  deleteItem: deleteItem
+  assignCategoryToItem: assignCategoryToItem
 };

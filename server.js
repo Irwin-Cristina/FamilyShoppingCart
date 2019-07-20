@@ -67,7 +67,7 @@ var app = express();
   app.post("/shopping_item", listController.insertNewItem);
  
 //delete item frim item_shopping table using the listcontroller function deleteItem
-  app.post("/delete", listController.deleteItem);
+  //app.post("/delete", listController.deleteItem);
 
   app.listen(PORT, function(){
   
